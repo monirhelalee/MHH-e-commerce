@@ -16,7 +16,7 @@ class AppTheme {
   static Color danger = Color(0xffdc3545);
   static Color warning = Color(0xffffc107);
   static Color dark = Color(0xff343a40);
-  static Color lightGrey = Color(0xfff8f9fa);
+  static Color lightGrey = Color(0xffEBF0FF);
 
 //  static Color primary = Color(0xff007bff);
   static Color grey = Color(0xff9098B1);
