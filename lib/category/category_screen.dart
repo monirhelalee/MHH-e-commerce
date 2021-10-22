@@ -18,8 +18,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Category"),
-          backgroundColor: Colors.black87,
+          title: Text("Explore"),
         ),
         body: Container(
           child: ListView.builder(

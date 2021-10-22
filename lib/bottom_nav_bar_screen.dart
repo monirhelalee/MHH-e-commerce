@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mhh_shop/app_theme/app_theme.dart';
 import 'package:mhh_shop/cart/cart_screen.dart';
 import 'package:mhh_shop/category/category_screen.dart';
 import 'package:mhh_shop/home/view/home_screen.dart';
+import 'package:mhh_shop/offer/offer_screen.dart';
 import 'package:mhh_shop/profile/profile_screen.dart';
 
 class BottomNavBarScreen extends StatefulWidget {
@@ -16,6 +18,44 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Widget nevBarIcon({
+      required String bottomName,
+      required int selectIndex,
+      required IconData icon,
+    }) {
+      return InkWell(
+        onTap: () {
+          selectedScreen = selectIndex;
+          setState(() {});
+        },
+        child: Padding(
+          padding: EdgeInsets.only(top: 10.0, bottom: 10),
+          child: Column(
+            children: [
+              Icon(
+                icon,
+                color: selectedScreen == selectIndex
+                    ? AppTheme.colorPrimary
+                    : AppTheme.grey,
+                size: 30,
+              ),
+              Text(
+                "$bottomName",
+                style: TextStyle(
+                    fontSize: 12,
+                    color: selectedScreen == selectIndex
+                        ? AppTheme.colorPrimary
+                        : AppTheme.grey,
+                    fontWeight: selectedScreen == selectIndex
+                        ? FontWeight.bold
+                        : FontWeight.normal),
+              )
+            ],
+          ),
+        ),
+      );
+    }
+
     return SafeArea(
         child: Scaffold(
       body: selectedScreen == 0
@@ -24,60 +64,42 @@ class _BottomNavBarScreenState extends State<BottomNavBarScreen> {
               ? CategoryScreen()
               : selectedScreen == 2
                   ? CartScreen()
-                  : ProfileScreen(),
+                  : selectedScreen == 3
+                      ? OfferScreen()
+                      : ProfileScreen(),
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-            color: Colors.black87, borderRadius: BorderRadius.circular(15)),
-        height: 70,
+          color: Colors.white30,
+        ),
+        height: 65,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            IconButton(
-                onPressed: () {
-                  selectedScreen = 0;
-                  setState(() {});
-                },
-                icon: Icon(
-                  selectedScreen == 0 ? Icons.home : Icons.home_outlined,
-                  color: Colors.white,
-                  size: 35,
-                )),
-            IconButton(
-                onPressed: () {
-                  selectedScreen = 1;
-                  setState(() {});
-                },
-                icon: Icon(
-                  selectedScreen == 1
-                      ? Icons.category
-                      : Icons.category_outlined,
-                  color: Colors.white,
-                  size: 35,
-                )),
-            IconButton(
-                onPressed: () {
-                  selectedScreen = 2;
-                  setState(() {});
-                },
-                icon: Icon(
-                  selectedScreen == 2
-                      ? Icons.shopping_cart
-                      : Icons.shopping_cart_outlined,
-                  color: Colors.white,
-                  size: 35,
-                )),
-            IconButton(
-                onPressed: () {
-                  selectedScreen = 3;
-                  setState(() {});
-                },
-                icon: Icon(
-                  selectedScreen == 3
-                      ? Icons.person_rounded
-                      : Icons.person_outline_rounded,
-                  color: Colors.white,
-                  size: 35,
-                )),
+            nevBarIcon(
+              bottomName: "Home",
+              selectIndex: 0,
+              icon: Icons.home_outlined,
+            ),
+            nevBarIcon(
+              bottomName: "Explore",
+              selectIndex: 1,
+              icon: Icons.search,
+            ),
+            nevBarIcon(
+              bottomName: "Cart",
+              selectIndex: 2,
+              icon: Icons.shopping_cart_outlined,
+            ),
+            nevBarIcon(
+              bottomName: "Offer",
+              selectIndex: 3,
+              icon: Icons.local_offer_outlined,
+            ),
+            nevBarIcon(
+              bottomName: "Account",
+              selectIndex: 4,
+              icon: Icons.person_outline_rounded,
+            ),
           ],
         ),
       ),

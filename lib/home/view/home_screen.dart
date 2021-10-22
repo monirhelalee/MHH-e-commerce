@@ -17,10 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () async {
-      await Provider.of<CategoryViewModel>(context, listen: false)
-          .getCategory();
       await Provider.of<AllProductViewModel>(context, listen: false)
           .getAllProducts();
+      await Provider.of<CategoryViewModel>(context, listen: false)
+          .getCategory();
     });
     super.initState();
   }

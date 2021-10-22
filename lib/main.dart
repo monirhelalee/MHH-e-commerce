@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mhh_shop/app_theme/app_theme.dart';
 import 'package:mhh_shop/bottom_nav_bar_screen.dart';
 import 'package:mhh_shop/home/view_model/all_product_view_model.dart';
 import 'package:mhh_shop/home/view_model/category_view_model.dart';
@@ -21,9 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
+        theme: AppTheme.lightTheme,
         home: BottomNavBarScreen(),
       ),
     );
