@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mhh_shop/app_theme/app_theme.dart';
 import 'package:mhh_shop/home/model/all_product_model.dart';
 import 'package:mhh_shop/product_details/view/prodict_details_screen.dart';
@@ -41,7 +43,7 @@ class _ProductCardState extends State<ProductCard> {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    color: AppTheme.lightGrey,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Padding(
@@ -58,8 +60,60 @@ class _ProductCardState extends State<ProductCard> {
                   height: 10,
                 ),
                 Container(
-                  color: Colors.red,
-                  child: Center(child: Text("Monir")),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${widget.products.title ?? ""}",
+                        maxLines: 2,
+                        style: GoogleFonts.poppins(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: AppTheme.darkBlue),
+                      ),
+                      RatingBarIndicator(
+                        rating: widget.products.rating!.rate,
+                        itemBuilder: (context, index) => Icon(
+                          Icons.star,
+                          color: Colors.amber,
+                        ),
+                        itemCount: 5,
+                        itemSize: 20.0,
+                        unratedColor: Colors.amber.withAlpha(50),
+                        direction: Axis.horizontal,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "\$${widget.products.price ?? ""}",
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold,
+                            color: AppTheme.colorPrimary,
+                            letterSpacing: 2),
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "\$543.22",
+                            style: GoogleFonts.poppins(
+                              color: AppTheme.grey,
+                              decoration: TextDecoration.lineThrough,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "25% off",
+                            style:
+                                GoogleFonts.poppins(color: AppTheme.primaryRed),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),

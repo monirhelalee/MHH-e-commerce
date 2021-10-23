@@ -16,6 +16,7 @@ class AppTheme {
   static Color danger = Color(0xffdc3545);
   static Color warning = Color(0xffffc107);
   static Color dark = Color(0xff343a40);
+  static Color darkBlue = Color(0xff223263);
   static Color lightGrey = Color(0xffEBF0FF);
 
 //  static Color primary = Color(0xff007bff);
@@ -25,6 +26,7 @@ class AppTheme {
   static Color facebookColor = Color(0xff3D579E);
   static Color linkedInColor = Color(0xff0076B4);
   static Color twitterColor = Color(0xff55ABEE);
+  static Color primaryRed = Color(0xffFB7181);
 
 //  static Color colorPrimary = Color(0xff0A5394);
   static Color colorPrimary = Color(0xff40bfff);
@@ -63,7 +65,7 @@ class AppTheme {
 
   static final ThemeData lightTheme = ThemeData(
     fontFamily: "Poppins",
-    primarySwatch: Colors.yellow,
+    primarySwatch: Colors.blue,
     visualDensity: VisualDensity.adaptivePlatformDensity,
     brightness: Brightness.light,
     backgroundColor: lightBackgroundColorColor,

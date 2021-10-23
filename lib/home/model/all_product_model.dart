@@ -61,20 +61,20 @@ final categoryValues = EnumValues({
 
 class Rating {
   Rating({
-    this.rate,
+    required this.rate,
     this.count,
   });
 
-  double? rate;
+  double rate;
   int? count;
 
   factory Rating.fromJson(Map<String, dynamic> json) => Rating(
-        rate: json["rate"] == null ? null : json["rate"].toDouble(),
+        rate: json["rate"] == null ? 0.0 : json["rate"].toDouble(),
         count: json["count"] == null ? null : json["count"],
       );
 
   Map<String, dynamic> toJson() => {
-        "rate": rate == null ? null : rate,
+        "rate": rate == null ? 0.0 : rate,
         "count": count == null ? null : count,
       };
 }

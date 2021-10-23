@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:mhh_shop/category/widget/category_card.dart';
+import 'package:mhh_shop/home/view/widget/home_category_card.dart';
 import 'package:mhh_shop/home/view/widget/product_card.dart';
 import 'package:mhh_shop/home/view_model/all_product_view_model.dart';
 import 'package:mhh_shop/home/view_model/category_view_model.dart';
@@ -74,34 +77,24 @@ class _HomeScreenState extends State<HomeScreen> {
         Padding(
           padding: EdgeInsets.only(left: 10.0, top: 10, bottom: 5),
           child: Text(
-            "Top Categories",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            "Categories",
+            style:
+                GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
         Container(
-          height: 60,
+          height: 120,
           child: ListView.builder(
               shrinkWrap: true,
               physics: AlwaysScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: categoryVM.categoryList.length,
               itemBuilder: (context, index) {
-                return Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black87,
-                    borderRadius: BorderRadius.circular(50),
-                  ),
-                  margin:
-                      EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 10),
-                  padding: EdgeInsets.only(left: 20, right: 20),
-                  child: Center(
-                      child: Text(
-                    "${categoryVM.categoryList[index]?.toString().toTitleCase() ?? ""}",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  )),
+                return HomeCategoryCard(
+                  categoryName: categoryVM.categoryList[index]
+                          ?.toString()
+                          .toTitleCase() ??
+                      "",
                 );
               }),
         )
@@ -109,6 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body:
             categoryVM.categoryList.isEmpty || allProductsVM.allProduct!.isEmpty
                 ? Center(
@@ -133,9 +127,9 @@ class _HomeScreenState extends State<HomeScreen> {
                               gridDelegate:
                                   SliverGridDelegateWithMaxCrossAxisExtent(
                                       maxCrossAxisExtent: 200,
-                                      childAspectRatio: 1.5 / 2,
-                                      crossAxisSpacing: 10,
-                                      mainAxisSpacing: 10),
+                                      childAspectRatio: 1.25 / 2,
+                                      crossAxisSpacing: 0,
+                                      mainAxisSpacing: 0),
                               itemCount: allProductsVM.allProduct!.length,
                               itemBuilder: (context, index) {
                                 return ProductCard(
